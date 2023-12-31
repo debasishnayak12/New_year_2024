@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Input Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #00FFFF;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #000000;
+            margin-top: 20px; /* Adjust as needed */
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        form {
+            background-color: #FF69B4;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            /* Adjust padding and margin as needed */
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            text-align: center;
+            color: #000000;
+            padding: 5px;
+            background-color: #00FFFF;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Thank You for visit  !</h1>
+
+    <main>
+        <form action="{{ url_for('home') }}" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name">
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </main>
+
+    <footer>
+        &copy;All rights reserved.
+        <p>@Created by : Debasish Nayak</p>
+    </footer>
+    <script>
+        document.forms[0].addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get the entered name
+            const name = document.getElementById('name').value;
+
+            // Redirect to the show_wish route with the name parameter
+            window.location.href = '{{ url_for('show_wish', name='') }}' + encodeURIComponent(name);
+        });
+    </script>
+
+
+
+
+</body>
+</html>
